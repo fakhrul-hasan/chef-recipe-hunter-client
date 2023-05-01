@@ -12,7 +12,7 @@ const Home = () => {
             alt=""
           />
             </div>
-          <div className="col-span-2 text-center absolute bottom-1/3 left-1/3">
+          <div className="col-span-2 text-center absolute bottom-1/3 left-1/3 right-10">
             <h2 className="text-white text-4xl font-bold">
               Contemporary western cuisine for all
             </h2>

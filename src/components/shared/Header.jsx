@@ -2,6 +2,7 @@ import { Avatar, Button, Dropdown, Navbar } from "flowbite-react";
 import React from "react";
 import { NavLink } from "react-router-dom";
 import './Header.css';
+import { NavbarLink } from "flowbite-react/lib/esm/components/Navbar/NavbarLink";
 
 const Header = () => {
   return (
@@ -22,12 +23,12 @@ const Header = () => {
     </span>
   </Navbar.Brand>
   <div className="flex md:order-2">
-  <Button
-      outline={true}
-      gradientDuoTone="greenToBlue"
+  <NavLink
+      to="/login"
+      className='outline px-4 py-2 rounded outline-white bg-white text-green-400 hover:bg-green-400 hover:text-white'
     >
       Login
-    </Button>
+    </NavLink>
     <Dropdown
       arrowIcon={false}
       inline={true}
