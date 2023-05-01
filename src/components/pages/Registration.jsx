@@ -1,11 +1,29 @@
 import { Button, Label, TextInput } from "flowbite-react";
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const Registration = () => {
+    const {createUser} = useContext(AuthContext)
+    const handleRegistration=(event)=>{
+        event.preventDefault();
+        const form = event.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        const photo = form.photo.value;
+        createUser(email, password)
+        .then(result=>{
+            const user = result.user;
+            console.log(user);
+        })
+        .catch(error=>{
+            console.error(error);
+        })
+    }
   return (
     <div className="w-2/4 mx-auto">
-      <form className="flex flex-col gap-4">
+      <form className="flex flex-col gap-4" onSubmit={handleRegistration}>
         <h1 className="text-white text-4xl font-bold text-center mt-1">Registration</h1>
         <div>
           <div className="mb-2 block">
