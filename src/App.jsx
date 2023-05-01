@@ -1,14 +1,16 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
+import Header from "./components/shared/Header";
+import { Outlet } from "react-router-dom";
+import FooterSection from "./components/shared/FooterSection";
 
 function App() {
 
   return (
-    <>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
-    </>
+    <div className="bg bg-fixed">
+      <Header></Header>
+      <Outlet></Outlet>
+      <FooterSection></FooterSection>
+    </div>
   );
 }
 
