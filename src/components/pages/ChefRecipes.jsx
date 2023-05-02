@@ -35,15 +35,14 @@ const ChefRecipes = () => {
     <>
       <div className="bg-white mt-8 pt-8 flex flex-col items-center px-20 mx-20 border rounded">
         <h2
-          className="text-green-400 text-4xl font-medium border-b-4 inline-block"
+          className="text-green-400 text-4xl font-medium border-b-4 inline-block mb-4"
           style={{ fontFamily: "'Great Vibes', cursive" }}
         >
           {chefData().name}
         </h2>
-        <p className="text-yellow-400 mb-4">Everything you need to know about us</p>
         <div className="grid grid-cols-3 gap-4 ">
           <div className="col-span-1">
-            <LazyLoad height={320}>
+            <LazyLoad height={340}>
               <img className="h-72" src={chefData().picture} alt="" />
             </LazyLoad>
           </div>

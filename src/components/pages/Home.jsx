@@ -47,9 +47,6 @@ const Home = () => {
             </span>
           </div>
           <div>
-            <Link to="/recipes" className="me-4 text-white hover:text-gray-300">
-              Recipes
-            </Link>
             <Link to="#" className="text-white hover:text-gray-300">
               Tutorial
             </Link>
