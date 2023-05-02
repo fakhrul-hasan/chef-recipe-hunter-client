@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="bg bg-fixed">
       <Header></Header>
-      <Outlet></Outlet>
+      <div className="min-h-[calc(100%-332px)]"><Outlet></Outlet></div>
       <FooterSection></FooterSection>
     </div>
   );

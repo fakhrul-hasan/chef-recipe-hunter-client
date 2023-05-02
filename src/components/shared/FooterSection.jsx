@@ -4,35 +4,35 @@ import { BsFacebook, BsInstagram, BsTwitter, BsGithub } from "react-icons/bs";
 
 const FooterSection = () => {
   return (
-    <Footer bgDark={true}>
+    <Footer bgDark={true} className="mt-8">
       <div className="w-full">
-        <div className="grid w-full grid-cols-2 gap-8 py-8 px-10 md:grid-cols-4">
+        <div className="grid w-full grid-cols-2 gap-8 py-4 px-10 md:grid-cols-4 bg-blue-950">
           <div>
             <Footer.Title title="Kitchen" className="text-green-400 mb-0" />
             <hr className="mb-4" />
             <Footer.LinkGroup col={true}>
-              <Footer.Link href="#">Learn</Footer.Link>
-              <Footer.Link href="#">Craft</Footer.Link>
-              <Footer.Link href="#">Recipe</Footer.Link>
+              <Footer.Link className="text-white" href="#">Learn</Footer.Link>
+              <Footer.Link className="text-white" href="#">Craft</Footer.Link>
+              <Footer.Link className="text-white" href="#">Recipe</Footer.Link>
             </Footer.LinkGroup>
           </div>
           <div>
             <Footer.Title title="Store" className="text-green-400 mb-0" />
             <hr className="mb-4" />
             <Footer.LinkGroup col={true}>
-              <Footer.Link href="#">Craft Your Own</Footer.Link>
-              <Footer.Link href="#">Store Locator</Footer.Link>
-              <Footer.Link href="#">Return Policy</Footer.Link>
+              <Footer.Link className="text-white" href="#">Craft Your Own</Footer.Link>
+              <Footer.Link className="text-white" href="#">Store Locator</Footer.Link>
+              <Footer.Link className="text-white" href="#">Return Policy</Footer.Link>
             </Footer.LinkGroup>
           </div>
           <div>
             <Footer.Title title="About" className="text-green-400 mb-0" />
             <hr className="mb-4" />
             <Footer.LinkGroup col={true}>
-              <Footer.Link href="#">About Us</Footer.Link>
-              <Footer.Link href="#">Contact</Footer.Link>
-              <Footer.Link href="#">Our Team</Footer.Link>
-              <Footer.Link href="#">Privacy Policy</Footer.Link>
+              <Footer.Link className="text-white" href="#">About Us</Footer.Link>
+              <Footer.Link className="text-white" href="#">Contact</Footer.Link>
+              <Footer.Link className="text-white" href="#">Our Team</Footer.Link>
+              <Footer.Link className="text-white" href="#">Privacy Policy</Footer.Link>
             </Footer.LinkGroup>
           </div>
           <div>
@@ -42,11 +42,11 @@ const FooterSection = () => {
             />
             <hr className="mb-4" />
             <Footer.LinkGroup col={true}>
-              <h6 className="text-xl font-semibold">
+              <h6 className="text-xl font-semibold text-white">
                 We will email in a good taste
               </h6>
               <input type="email" placeholder="Enter your email address" />
-              <Button className="bg-green-400">JOIN</Button>
+              <Button className="bg-green-400 hover:bg-green-600">JOIN</Button>
             </Footer.LinkGroup>
           </div>
         </div>

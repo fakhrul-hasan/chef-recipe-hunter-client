@@ -1,11 +1,31 @@
 import { Button, Label, TextInput } from "flowbite-react";
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProvider";
+import { Toaster, toast } from "react-hot-toast";
 
 const Login = () => {
+  const {login} = useContext(AuthContext);
+  const handleLogin = event =>{
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    login(email, password)
+    .then(result=>{
+      const loggedUser = result.user;
+      form.reset();
+      console.log(loggedUser);
+      toast.success('Login successfull!')
+    })
+    .catch(error=>{
+      console.error(error);
+    })
+  }
   return (
     <div className="w-2/4 mx-auto mb-4">
-        <form className="flex flex-col gap-4">
+      <div><Toaster/></div>
+        <form className="flex flex-col gap-4" onSubmit={handleLogin}>
         <h1 className="text-white text-4xl font-bold text-center mt-1">Login</h1>
       <div>
         <div className="mb-2 block">

@@ -1,10 +1,22 @@
-import { Avatar, Button, Dropdown, Navbar } from "flowbite-react";
-import React from "react";
+import { Avatar, Dropdown, Navbar } from "flowbite-react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import './Header.css';
-import { NavbarLink } from "flowbite-react/lib/esm/components/Navbar/NavbarLink";
+import { AuthContext } from "../../Providers/AuthProvider";
+import { Toaster, toast } from "react-hot-toast";
+import userPhoto from '../../assets/images/user-photo.jpg';
 
 const Header = () => {
+  const {logout, user} = useContext(AuthContext);
+  const handleLogout=()=>{
+    logout()
+    .then(()=>{
+      toast.success('Logout successfull!')
+    })
+    .catch(error=>{
+      console.error(error);
+    })
+  }
   return (
     <div>
       <Navbar
@@ -18,28 +30,22 @@ const Header = () => {
       className="mr-3 h-6 sm:h-9"
       alt="Flowbite Logo"
     />
-    <span className="self-center whitespace-nowrap text-xl font-semibold text-white">
+    <span className="self-center whitespace-nowrap text-2xl font-semibold text-white">
       S-peac-hless
     </span>
   </Navbar.Brand>
   <div className="flex md:order-2">
-  <NavLink
-      to="/login"
-      className='outline px-4 py-2 rounded outline-white bg-white text-green-400 hover:bg-green-400 hover:text-white'
-    >
-      Login
-    </NavLink>
-    <Dropdown
+    {user ? <Dropdown
       arrowIcon={false}
       inline={true}
-      label={<Avatar alt="User settings" img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" rounded={true}/>}
+      label={<Avatar alt="User settings" img={user.photoURL || userPhoto} rounded={true}/>}
     >
       <Dropdown.Header>
         <span className="block text-sm">
-          Bonnie Green
+          {user.displayName || 'Anonymous'}
         </span>
         <span className="block truncate text-sm font-medium">
-          name@flowbite.com
+          {user.email}
         </span>
       </Dropdown.Header>
       <Dropdown.Item>
@@ -49,34 +55,42 @@ const Header = () => {
         Settings
       </Dropdown.Item>
       <Dropdown.Divider />
-      <Dropdown.Item>
+      <Dropdown.Item onClick={handleLogout}>
         Sign out
       </Dropdown.Item>
     </Dropdown>
+     : <NavLink
+      to="/login"
+      className='outline px-4 py-2 rounded outline-white bg-white text-green-400 hover:bg-green-400 hover:text-white'
+    >
+      Login
+    </NavLink>}
+  
     <Navbar.Toggle />
   </div>
   <Navbar.Collapse>
     <NavLink
       to='/'
-      className={({ isActive }) => (isActive ? 'active' : 'default')}
+      className={({ isActive }) => (isActive ? 'active' : 'text-white')}
     >
       Home
     </NavLink>
     <NavLink
       to='/blog'
-      className={({ isActive }) => (isActive ? 'active' : 'default')}
+      className={({ isActive }) => (isActive ? 'active' : 'text-white')}
     >
       Blog
     </NavLink>
     <NavLink
       to='/about'
-      className={({ isActive }) => (isActive ? 'active' : 'default')}
+      className={({ isActive }) => (isActive ? 'active' : 'text-white')}
     >
       About
     </NavLink>
     
   </Navbar.Collapse>
 </Navbar>
+<div><Toaster/></div>
     </div>
   );
 };
