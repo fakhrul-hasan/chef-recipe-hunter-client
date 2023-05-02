@@ -1,10 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import RecipeCard from "./RecipeCard";
-import { AuthContext } from "../../Providers/AuthProvider";
+import { Spinner } from "flowbite-react";
+import LazyLoad from "react-lazy-load";
 
 const ChefRecipes = () => {
-    const {loading} = useContext(AuthContext);
+  const [loading, setLoading] = useState(true);
   const [fetchData, setFetchData] = useState();
   const chefRecipesData = useLoaderData();
   const chefId = [...chefRecipesData];
@@ -15,26 +16,38 @@ const ChefRecipes = () => {
         await fetch("http://localhost:3000/chefsData")
       ).json();
       setFetchData(data);
+      setLoading(false);
     };
     dataFetch();
   }, []);
-  //   const chef = fetchData.find(c=> c.id == id);
-  console.log(fetchData);
+  if (loading) {
+    return (
+      <div className="text-center">
+        <Spinner aria-label="Center-aligned spinner example" />
+      </div>
+    );
+  }
+  const chefData = () => {
+    const chef = fetchData.find((chef) => chef.id == id)
+    return chef;
+  };
   return (
     <>
-      <div className="bg-white pt-8 flex flex-col items-center px-40">
+      <div className="bg-white mt-8 pt-8 flex flex-col items-center px-20 mx-20 border rounded">
         <h2
           className="text-green-400 text-4xl font-medium border-b-4 inline-block"
           style={{ fontFamily: "'Great Vibes', cursive" }}
         >
-          About us
+          {chefData().name}
         </h2>
-        <p className="text-yellow-400">Everything you need to know about us</p>
-        <div className="grid grid-cols-2">
-          <div className="flex justify-center">
-            <img src={[chefRecipesData[0]].chef_id} alt="" />
+        <p className="text-yellow-400 mb-4">Everything you need to know about us</p>
+        <div className="grid grid-cols-3 gap-4 ">
+          <div className="col-span-1">
+            <LazyLoad height={320}>
+              <img className="h-72" src={chefData().picture} alt="" />
+            </LazyLoad>
           </div>
-          <div className="flex items-center">
+          <div className="col-span-2">
             <p>
               <span className="text-green-400">Lorem ipsum</span> dolor, sit
               amet consectetur adipisicing elit. Optio perferendis pariatur, sit
@@ -44,10 +57,13 @@ const ChefRecipes = () => {
               cupiditate odit doloribus exercitationem culpa provident quasi
               sequi praesentium quae!
             </p>
+            <h5 className="font-semibold mt-4">Likes: {chefData().num_likes}</h5>
+            <h5 className="font-semibold">Recipes: {chefRecipesData.length} types</h5>
+            <h5 className="font-semibold">Experience: {chefData().experience}</h5>
           </div>
         </div>
       </div>
-      <section>
+      <section className="flex flex-col items-center mt-12">
         {chefRecipesData.map((chefRecipe) => (
           <RecipeCard key={chefRecipe.id} chefRecipe={chefRecipe}></RecipeCard>
         ))}
