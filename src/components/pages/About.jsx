@@ -5,12 +5,12 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "./About.css";
 
-import { Autoplay, Pagination, Navigation } from "swiper";
+import { Autoplay, Pagination } from "swiper";
 
 const About = () => {
   return (
     <>
-      <div className="mt-8 flex flex-col items-center px-40">
+      <div className="bg-white pt-8 flex flex-col items-center px-40">
         <h2
           className="text-green-400 text-4xl font-medium border-b-4 inline-block"
           style={{ fontFamily: "'Great Vibes', cursive" }}
@@ -43,14 +43,13 @@ const About = () => {
           spaceBetween={30}
           centeredSlides={true}
           autoplay={{
-            delay: 2500,
+            delay: 5000,
             disableOnInteraction: false,
           }}
           pagination={{
             clickable: true,
           }}
-          navigation={true}
-          modules={[Autoplay, Pagination, Navigation]}
+          modules={[Autoplay, Pagination]}
           className="mySwiper"
         >
           <SwiperSlide>

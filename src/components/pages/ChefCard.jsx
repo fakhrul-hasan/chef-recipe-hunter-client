@@ -1,10 +1,11 @@
-import { Card } from 'flowbite-react';
+import { Button, Card } from 'flowbite-react';
 import React, { useState } from 'react';
 import { FaThumbsUp, FaRegThumbsUp } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 const ChefCard = ({chefData}) => {
   const [like, setLike] = useState(false);
-  const {picture, name, experience, num_recipes, num_likes} = chefData;
+  const {picture, name, experience, num_recipes, num_likes, id} = chefData;
     return (
       <div className="max-w-sm">
       <Card
@@ -25,12 +26,12 @@ const ChefCard = ({chefData}) => {
             <div onClick={()=>setLike(!like)}>{like ? <FaThumbsUp/> : <FaRegThumbsUp/>}</div>
             {num_likes}
           </span>
-          <a
-            href="#"
+          <Link
+            to={`/recipes/${id}`}
             className="rounded-lg bg-green-400 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-green-600 focus:outline-none focus:ring-4 focus:ring-green-300 dark:bg-green-400 dark:hover:bg-green-600 dark:focus:ring-green-300"
           >
             View Recipes
-          </a>
+          </Link>
         </div>
       </Card>
     </div>
