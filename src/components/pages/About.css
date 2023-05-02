@@ -1,0 +1,21 @@
+.bg-about{
+    background-image: linear-gradient(
+        rgba(0, 0, 0, 0.7), 
+        rgba(0, 0, 0, 0.7)
+      ),url("https://www.shutterstock.com/image-photo/raw-spaghetti-boiled-on-wood-260nw-376076812.jpg");
+    height: h-40;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .swiper {
+    width: 100%;
+    height: 100%;
+  }
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
