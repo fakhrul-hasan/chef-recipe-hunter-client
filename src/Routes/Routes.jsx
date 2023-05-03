@@ -8,6 +8,7 @@ import Registration from '../components/pages/Registration';
 import ChefRecipes from '../components/pages/chefRecipes';
 import { createBrowserRouter } from 'react-router-dom';
 import ErrorPage from '../components/pages/ErrorPage';
+import PrivateRoute from './PrivateRoute';
 
 const router = createBrowserRouter([
     {
@@ -37,12 +38,8 @@ const router = createBrowserRouter([
           element: <Registration></Registration>,
         },
         {
-          path: "recipes",
-          element: <ChefRecipes></ChefRecipes>,
-        },
-        {
             path: "recipes/:id",
-            element: <ChefRecipes></ChefRecipes>,
+            element: <PrivateRoute><ChefRecipes></ChefRecipes></PrivateRoute>,
             loader: ({params})=> fetch(`http://localhost:3000/recipes/${params.id}`)
         }
       ],
