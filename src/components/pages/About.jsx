@@ -10,17 +10,17 @@ import { Autoplay, Pagination } from "swiper";
 const About = () => {
   return (
     <>
-      <div className="bg-white pt-8 flex flex-col items-center px-40">
+      <div className="bg-white pt-8 flex flex-col items-center md:px-40">
         <h2
           className="text-green-400 text-4xl font-medium border-b-4 inline-block"
           style={{ fontFamily: "'Great Vibes', cursive" }}
         >
           About us
         </h2>
-        <p className="text-yellow-400">Everything you need to know about us</p>
-        <div className="grid grid-cols-2">
-          <div className="flex items-center">
-            <p>
+        <p className="text-yellow-400 mb-4 md:mb-0">Everything you need to know about us</p>
+        <div className="flex flex-col-reverse md:grid grid-cols-2">
+          <div className="flex items-center px-2 md:px-0">
+            <p className="text-center md:text-left pb-2 md:pb-0">
               <span className="text-green-400">Lorem ipsum</span> dolor, sit
               amet consectetur adipisicing elit. Optio perferendis pariatur, sit
               ipsam omnis eveniet suscipit incidunt, minus laboriosam nam modi
@@ -38,7 +38,7 @@ const About = () => {
           </div>
         </div>
       </div>
-      <section className="h-96 bg-about">
+      <section className="md:h-96 p-4 md:p-0 bg-about">
         <Swiper
           spaceBetween={30}
           centeredSlides={true}
@@ -53,13 +53,13 @@ const About = () => {
           className="mySwiper"
         >
           <SwiperSlide>
-            <div>
+            <div className="py-4 md:py-0">
               <p className="italic text-lg text-white text-left">
                 Latest tweet of{" "}
                 <span className="text-yellow-400">@s-peac-hless:</span>
               </p>
               <br />
-              <h5 className="text-white text-4xl text-right italic">
+              <h5 className="text-white md:text-4xl text-right italic">
                 "Buying couples of chilli to prepare for a Spicy Party... "
               </h5>
             </div>
@@ -71,7 +71,7 @@ const About = () => {
                 <span className="text-yellow-400">@s-peac-hless:</span>
               </p>
               <br />
-              <h5 className="text-white text-4xl text-right italic">
+              <h5 className="text-white md:text-4xl text-right italic">
                 "Buying couples of chilli to prepare for a Spicy Party... "
               </h5>
             </div>
@@ -83,7 +83,7 @@ const About = () => {
                 <span className="text-yellow-400">@s-peac-hless:</span>
               </p>
               <br />
-              <h5 className="text-white text-4xl text-right italic">
+              <h5 className="text-white md:text-4xl text-right italic">
                 "Buying couples of chilli to prepare for a Spicy Party... "
               </h5>
             </div>

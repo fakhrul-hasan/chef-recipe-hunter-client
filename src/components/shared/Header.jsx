@@ -20,7 +20,7 @@ const Header = () => {
   return (
     <div>
       <Navbar
-    className="!bg-green-400 !px-10"
+    className="!bg-green-400 md:!px-10"
   fluid={true}
   rounded={true}
 >
@@ -61,7 +61,7 @@ const Header = () => {
     </Dropdown>
      : <NavLink
       to="/login"
-      className='outline px-4 py-2 rounded outline-white bg-white text-green-400 hover:bg-green-400 hover:text-white'
+      className='outline px-4 py-2 rounded outline-white bg-white text-green-400 hover:bg-green-400 hover:text-white me-2 md:me-0'
     >
       Login
     </NavLink>}

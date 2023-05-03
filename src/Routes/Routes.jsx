@@ -7,11 +7,13 @@ import Login from '../components/pages/Login';
 import Registration from '../components/pages/Registration';
 import ChefRecipes from '../components/pages/chefRecipes';
 import { createBrowserRouter } from 'react-router-dom';
+import ErrorPage from '../components/pages/ErrorPage';
 
 const router = createBrowserRouter([
     {
       path: "/",
       element: <App></App>,
+      errorElement: <ErrorPage></ErrorPage>,
       children: [
         {
           path: "/",
