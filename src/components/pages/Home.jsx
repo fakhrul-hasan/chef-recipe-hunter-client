@@ -29,7 +29,7 @@ const Home = () => {
               exorbitant prices, high quality of ingredients, food styling,
               comfortable venue, or service charges? If it is, rest assured Chef
               Recipe™ has those as the elements in running our business for
-              heartlanders except for the first and last... more>>
+              heartlanders except for the first and last.
             </p>
           </div>
         </div>
