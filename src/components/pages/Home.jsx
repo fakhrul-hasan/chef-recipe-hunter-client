@@ -118,7 +118,7 @@ const Home = () => {
           to="/recipes"
           className="flex justify-center"
         >
-          <div className="px-8 py-4 mt-8 bg-green-400 text-white flex items-center gap-1">
+          <div className="px-8 py-4 mt-8 bg-green-400 hover:bg-green-600 text-white flex items-center gap-1">
             <span>Load More </span>
             <BsArrowRepeat />
           </div>

@@ -50,7 +50,7 @@ const RecipeCard = ({recipe}) => {
         <p><span className="font-semibold">Ingredients: </span>{ingredientsArr}</p>
         <p><span className="font-semibold">Cooking Method: </span>{cookingMethod}</p>
         </div>
-        <button className="bg-green-400 px-2 py-1 rounded-md" onClick={closeModal}>close</button>
+        <button className="bg-green-400 hover:bg-green-600 text-white px-2 py-1 rounded-md" onClick={closeModal}>close</button>
       </Modal>
         <h5 className="text-2xl font-semibold tracking-tight text-gray-500 dark:text-white">
           {recipeName}
