@@ -1,7 +1,9 @@
 import React, { useRef } from "react";
 import ReactPrint from "react-to-print";
+import useTitle from "../../hooks/useTitle";
 
 const Blog = () => {
+  useTitle('Blog');
   const ref = useRef();
   return (
     <>

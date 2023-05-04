@@ -3,8 +3,10 @@ import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { Toaster, toast } from "react-hot-toast";
+import useTitle from "../../hooks/useTitle";
 
 const Registration = () => {
+  useTitle('Registration');
   const location = useLocation();
   console.log(location);
   const navigate = useNavigate();

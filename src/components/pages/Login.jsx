@@ -4,8 +4,10 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { Toaster, toast } from "react-hot-toast";
 import { FaGoogle, FaGithub } from "react-icons/fa";
+import useTitle from "../../hooks/useTitle";
 
 const Login = () => {
+  useTitle('Login');
   const [error, setError] = useState('');
   const { login, googleLogin, githubLogin } = useContext(AuthContext);
   const location = useLocation();

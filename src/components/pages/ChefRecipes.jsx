@@ -3,8 +3,10 @@ import { useLoaderData } from "react-router-dom";
 import ChefRecipeCard from "./ChefRecipeCard";
 import { Spinner } from "flowbite-react";
 import LazyLoad from "react-lazy-load";
+import useTitle from "../../hooks/useTitle";
 
 const ChefRecipes = () => {
+  useTitle('Chef Recipes');
   const [loading, setLoading] = useState(true);
   const [fetchData, setFetchData] = useState();
   const chefRecipesData = useLoaderData();

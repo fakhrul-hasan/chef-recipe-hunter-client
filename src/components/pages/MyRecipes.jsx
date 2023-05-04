@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { getFavCart } from '../../utilities/fakeDb';
 import ChefRecipeCard from './ChefRecipeCard';
+import useTitle from '../../hooks/useTitle';
 
 const MyRecipes = () => {
+    useTitle('My Recipes');
     const recipesData = useLoaderData();
     const [cart,setCart] = useState();
     useEffect(()=>{
