@@ -5,6 +5,7 @@ import About from "./About";
 import RecipeCard from "./RecipeCard";
 import { Spinner } from "flowbite-react";
 import { BsArrowRepeat } from "react-icons/bs";
+import useTitle from "../../hooks/useTitle";
 
 const customStyles = {
   content: {
@@ -18,6 +19,7 @@ const customStyles = {
 };
 
 const Home = () => {
+  useTitle('');
   let [recipes, setRecipes] = useState();
   const [loading, setLoading] = useState(true);
   useEffect(() => {
