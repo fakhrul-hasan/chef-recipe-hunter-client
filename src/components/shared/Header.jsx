@@ -1,6 +1,6 @@
 import { Avatar, Dropdown, Navbar } from "flowbite-react";
 import React, { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import './Header.css';
 import { AuthContext } from "../../Providers/AuthProvider";
 import { Toaster, toast } from "react-hot-toast";
@@ -56,7 +56,7 @@ const Header = () => {
       </Dropdown.Item>
       <Dropdown.Divider />
       <Dropdown.Item onClick={handleLogout}>
-        Sign out
+        <Link to='/'>Sign out</Link>
       </Dropdown.Item>
     </Dropdown>
      : <NavLink

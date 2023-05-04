@@ -4,7 +4,7 @@ import { BsFacebook, BsInstagram, BsTwitter, BsGithub } from "react-icons/bs";
 
 const FooterSection = () => {
   return (
-    <Footer bgDark={true} className="mt-8">
+    <Footer bgDark={true}>
       <div className="w-full">
         <div className="grid w-full grid-cols-2 gap-2 md:gap-8 py-4 px-2 md:px-10 md:grid-cols-4 bg-blue-950">
           <div className="mb-4 md:mb-0">

@@ -1,13 +1,16 @@
 import { Button, Label, TextInput } from "flowbite-react";
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
-import { FaGoogle, FaGithub } from "react-icons/fa";
 import { Toaster, toast } from "react-hot-toast";
 
 const Registration = () => {
+  const location = useLocation();
+  console.log(location);
+  const navigate = useNavigate();
+  const from = location.state?.state?.from?.pathname || '/';
   const [error, setError] = useState('');
-    const {createUser, googleLogin, githubLogin} = useContext(AuthContext)
+    const {createUser} = useContext(AuthContext)
     const handleRegistration=(event)=>{
         event.preventDefault();
         const form = event.target;
@@ -24,27 +27,12 @@ const Registration = () => {
             const user = result.user;
             form.reset();
             console.log(user);
-            toast.success('Registration successfull!')
+            toast.success('Registration successfull!');
+            navigate(from, { replace: true });
         })
         .catch(error=>{
             console.error(error);
         })
-    }
-    const handleGoogleSignin=()=>{
-      googleLogin()
-      .then(result=>{
-        const loggedUser = result.user;
-        console.log(loggedUser);
-      })
-      .catch()
-    }
-    const handleGithubSignin=()=>{
-      githubLogin()
-      .then(result=>{
-        const loggedUser = result.user;
-        console.log(loggedUser);
-      })
-      .catch()
     }
   return (
     <div className="w-2/4 mx-auto">
@@ -125,8 +113,6 @@ const Registration = () => {
           Sign Up
         </Button>
         <div><Toaster/></div>
-        <button onClick={handleGoogleSignin} className="outline text-white outline-green-400 rounded py-2 hover:text-green-400"><FaGoogle className="inline me-1"/> Continue with Google</button>
-        <button onClick={handleGithubSignin} className="outline text-white outline-green-400 rounded py-2 mb-2 hover:text-green-400"><FaGithub className="inline me-1"/> Continue with Github</button>
       </form>
     </div>
   );
