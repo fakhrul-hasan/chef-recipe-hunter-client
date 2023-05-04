@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { getFavCart } from '../../utilities/fakeDb';
-import RecipeCard from './RecipeCard';
+import ChefRecipeCard from './ChefRecipeCard';
 
 const MyRecipes = () => {
     const recipesData = useLoaderData();
@@ -18,10 +18,10 @@ const MyRecipes = () => {
     return (
         <div className='grid grid-cols-2 gap-4 my-4'>
             {
-                cart?.map(chefRecipe=><RecipeCard
+                cart?.map(chefRecipe=><ChefRecipeCard
                 key={chefRecipe.id}
                 chefRecipe={chefRecipe}
-                ></RecipeCard>)
+                ></ChefRecipeCard>)
             }
         </div>
     );

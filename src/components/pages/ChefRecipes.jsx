@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
-import RecipeCard from "./RecipeCard";
+import ChefRecipeCard from "./ChefRecipeCard";
 import { Spinner } from "flowbite-react";
 import LazyLoad from "react-lazy-load";
 
@@ -13,7 +13,7 @@ const ChefRecipes = () => {
   useEffect(() => {
     const dataFetch = async () => {
       const data = await (
-        await fetch("http://localhost:3000/chefsData")
+        await fetch("https://chef-recipe-hunter-server-fakhrul-hasan.vercel.app/chefsData")
       ).json();
       setFetchData(data);
       setLoading(false);
@@ -64,7 +64,7 @@ const ChefRecipes = () => {
       </div>
       <section className="flex flex-col items-center mt-12">
         {chefRecipesData.map((chefRecipe) => (
-          <RecipeCard key={chefRecipe.id} chefRecipe={chefRecipe}></RecipeCard>
+          <ChefRecipeCard key={chefRecipe.id} chefRecipe={chefRecipe}></ChefRecipeCard>
         ))}
       </section>
     </>

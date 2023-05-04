@@ -1,10 +1,48 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import ChefCard from "./ChefCard";
 import About from "./About";
+import RecipeCard from "./RecipeCard";
+import { Spinner } from "flowbite-react";
+import { BsArrowRepeat } from "react-icons/bs";
+
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+  },
+};
 
 const Home = () => {
+  let [recipes, setRecipes] = useState();
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    const dataFetch = async () => {
+      const data = await (
+        await fetch(
+          "https://chef-recipe-hunter-server-fakhrul-hasan.vercel.app/recipes"
+        )
+      ).json();
+      setRecipes(data);
+      setLoading(false);
+    };
+    dataFetch();
+  }, []);
   const chefsData = useLoaderData();
+  if (loading) {
+    return (
+      <div className="text-center">
+        <Spinner aria-label="Center-aligned spinner example" />
+      </div>
+    );
+  }
+  if (recipes.length > 6) {
+    recipes = recipes.slice(0, 6);
+  }
   return (
     <>
       <section className="md:min-h-screen w-full">
@@ -47,6 +85,9 @@ const Home = () => {
             </span>
           </div>
           <div>
+            <Link to="/recipes" className="text-white hover:text-gray-300 me-4">
+              Recipes
+            </Link>
             <Link to="#" className="text-white hover:text-gray-300">
               Tutorial
             </Link>
@@ -56,8 +97,52 @@ const Home = () => {
       <section>
         <About></About>
       </section>
-      <section className="px-2 md:px-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 md:mt-12 mb-8">
+      <section className="bg-blue-950 py-8">
+        <div className="text-center">
+          <h2
+            className="text-green-400 text-4xl font-medium border-b-4 inline-block "
+            style={{ fontFamily: "'Great Vibes', cursive" }}
+          >
+            Our Recipes
+          </h2>
+          <p className="text-white text-lg mb-4 md:mb-8 mt-4 ">
+            Everything you need to know about us
+          </p>
+        </div>
+        <div className="grid grid-cols-3 justify-center ps-4 gap-4">
+          {recipes.map((recipe) => (
+            <RecipeCard key={recipe.id} recipe={recipe}></RecipeCard>
+          ))}
+        </div>
+        <Link
+          to="/recipes"
+          className="flex justify-center"
+        >
+          <div className="px-8 py-4 mt-8 bg-green-400 text-white flex items-center gap-1">
+            <span>Load More </span>
+            <BsArrowRepeat />
+          </div>
+        </Link>
+      </section>
+      <div
+        className="absolute w-0 h-0 border-l-[635px] border-l-transparent
+        border-t-[75px] border-t-blue-950
+        border-r-[635px] border-r-transparent
+        "
+      ></div>
+      <section className="px-2 md:px-10 bg-white">
+        <div className="text-center pt-24">
+          <h2
+            className="text-green-400 text-4xl font-medium border-b-4 inline-block "
+            style={{ fontFamily: "'Great Vibes', cursive" }}
+          >
+            Our chef
+          </h2>
+          <p className="text-gray-500 text-lg mb-4 md:mb-8 mt-4 ">
+            Everything you need to know about us
+          </p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 md:mt-12 pb-8">
           {chefsData.map((chefData) => (
             <ChefCard key={chefData.id} chefData={chefData}></ChefCard>
           ))}

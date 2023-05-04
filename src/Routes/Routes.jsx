@@ -10,6 +10,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import ErrorPage from '../components/pages/ErrorPage';
 import PrivateRoute from './PrivateRoute';
 import MyRecipes from '../components/pages/MyRecipes';
+import RecipeSection from '../components/pages/RecipeSection';
 
 const router = createBrowserRouter([
     {
@@ -20,7 +21,7 @@ const router = createBrowserRouter([
         {
           path: "/",
           element: <Home></Home>,
-          loader: ()=> fetch('http://localhost:3000/chefsData')
+          loader: ()=> fetch('https://chef-recipe-hunter-server-fakhrul-hasan.vercel.app/chefsData')
         },
         {
           path: "/blog",
@@ -41,12 +42,17 @@ const router = createBrowserRouter([
         {
             path: "recipes/:id",
             element: <PrivateRoute><ChefRecipes></ChefRecipes></PrivateRoute>,
-            loader: ({params})=> fetch(`http://localhost:3000/recipes/${params.id}`)
+            loader: ({params})=> fetch(`https://chef-recipe-hunter-server-fakhrul-hasan.vercel.app/recipes/${params.id}`)
         },
         {
           path: '/myRecipes',
           element: <PrivateRoute><MyRecipes></MyRecipes></PrivateRoute>,
-          loader: ()=> fetch('http://localhost:3000/recipes'),
+          loader: ()=> fetch('https://chef-recipe-hunter-server-fakhrul-hasan.vercel.app/recipes'),
+        },
+        {
+          path: 'recipes',
+          element: <RecipeSection></RecipeSection>,
+          loader: ()=> fetch('https://chef-recipe-hunter-server-fakhrul-hasan.vercel.app/recipes')
         }
       ],
     },
