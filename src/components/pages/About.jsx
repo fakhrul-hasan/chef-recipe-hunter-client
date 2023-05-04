@@ -9,7 +9,7 @@ import { Autoplay, Pagination } from "swiper";
 import useTitle from "../../hooks/useTitle";
 
 const About = () => {
-  useTitle('About');
+  useTitle('');
   return (
     <>
       <div className="bg-white pt-8 flex flex-col items-center md:px-40">
