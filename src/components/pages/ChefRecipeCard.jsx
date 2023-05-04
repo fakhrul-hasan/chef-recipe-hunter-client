@@ -87,7 +87,7 @@ const ChefRecipeCard = ({ chefRecipe }) => {
         <p><span className="font-semibold">Ingredients: </span>{ingredientsArr}</p>
         <p><span className="font-semibold">Cooking Method: </span>{cookingMethod}</p>
         </div>
-        <button className="bg-green-400 px-2 py-1 rounded-md" onClick={closeModal}>close</button>
+        <button className="bg-green-400 hover:bg-green-600 text-white px-2 py-1 rounded-md" onClick={closeModal}>close</button>
       </Modal>
           </p>
           <div className="font-normal text-gray-700 dark:text-gray-400 flex gap-2">
