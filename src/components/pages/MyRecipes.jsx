@@ -3,6 +3,7 @@ import { useLoaderData, useLocation } from 'react-router-dom';
 import { getFavCart, removeFromDb } from '../../utilities/fakeDb';
 import ChefRecipeCard from './ChefRecipeCard';
 import useTitle from '../../hooks/useTitle';
+import { toast } from 'react-hot-toast';
 
 const MyRecipes = () => {
     useTitle('My Recipes');
@@ -21,6 +22,7 @@ const MyRecipes = () => {
         const remaining = cart.filter(recipe=>recipe.id !== id);
         setCart(remaining);
         removeFromDb(id);
+        toast.success('Successfully deleted!!!');
     }
     return (
         <div className='grid grid-cols-2 gap-4 my-4'>

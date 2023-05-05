@@ -61,7 +61,7 @@ const ChefRecipeCard = ({ chefRecipe, handleRemoveFromCart }) => {
               {location === '/myRecipes' || <div>{!favorite ? (
                 <FaRegHeart onClick={() => handleFavorite(id)} className="text-xl" />
                 ) : (
-                <FaHeart className="text-xl" />
+                <FaHeart onClick={() => handleFavorite(id)} className="text-xl" />
               )}</div>}
             </div>
           </div>
