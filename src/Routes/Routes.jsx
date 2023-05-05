@@ -11,6 +11,7 @@ import ErrorPage from '../components/pages/ErrorPage';
 import PrivateRoute from './PrivateRoute';
 import MyRecipes from '../components/pages/MyRecipes';
 import RecipeSection from '../components/pages/RecipeSection';
+import Profile from '../components/pages/Profile';
 
 const router = createBrowserRouter([
     {
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
           path: 'recipes',
           element: <RecipeSection></RecipeSection>,
           loader: ()=> fetch('https://chef-recipe-hunter-server-fakhrul-hasan.vercel.app/recipes')
+        },
+        {
+          path: 'profile',
+          element: <PrivateRoute><Profile></Profile></PrivateRoute>
         }
       ],
     },

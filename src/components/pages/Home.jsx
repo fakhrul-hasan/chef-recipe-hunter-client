@@ -114,7 +114,7 @@ const Home = () => {
             Everything you need to know about us
           </p>
         </div>
-        <div className="grid grid-cols-3 justify-center ps-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 justify-center ps-2 md:ps-4  pe-2 md:pe-0 gap-4">
           {recipes.map((recipe) => (
             <RecipeCard key={recipe.id} recipe={recipe}></RecipeCard>
           ))}
@@ -130,9 +130,9 @@ const Home = () => {
         </Link>
       </section>
       <div
-        className="absolute w-0 h-0 border-l-[635px] border-l-transparent
+        className="absolute w-0 h-0 border-l-[190px] md:border-l-[635px] border-l-transparent
         border-t-[75px] border-t-blue-950
-        border-r-[635px] border-r-transparent
+       border-r-[190px] md:border-r-[635px] border-r-transparent
         "
       ></div>
       {/* chef section  */}

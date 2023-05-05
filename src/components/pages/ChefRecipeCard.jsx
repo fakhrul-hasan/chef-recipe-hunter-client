@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 import { FaRegHeart, FaHeart, FaRegTrashAlt } from "react-icons/fa";
-import { Toaster, toast } from "react-hot-toast";
-import { addToDb, removeFromDb} from "../../utilities/fakeDb";
+import { Toaster} from "react-hot-toast";
+import { addToDb} from "../../utilities/fakeDb";
 import Modal from 'react-modal';
 import { useLocation } from "react-router-dom";
 

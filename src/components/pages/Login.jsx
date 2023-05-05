@@ -65,7 +65,7 @@ const Login = () => {
         <h1 className="text-white text-4xl font-bold text-center mt-1">
           Login
         </h1>
-        <p className="text-lg text-red-600 bg-white">{error}</p>
+        <p className="text-lg text-red-800 bg-red-300">{error}</p>
         <div>
           <div className="mb-2 block">
             <Label

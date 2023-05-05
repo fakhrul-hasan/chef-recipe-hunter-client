@@ -49,7 +49,7 @@ const Header = () => {
         </span>
       </Dropdown.Header>
       <Dropdown.Item>
-        Dashboard
+        <Link to='/profile'>Profile</Link>
       </Dropdown.Item>
       <Dropdown.Item>
         Settings
