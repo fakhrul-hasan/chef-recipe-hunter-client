@@ -58,11 +58,11 @@ const ChefRecipeCard = ({ chefRecipe, handleRemoveFromCart }) => {
               {recipeName}
             </h5>
             <div>
-              {location === '/myRecipes' && !favorite ? (
-                <FaHeart onClick={()=>handleRemoveFromCart(id)} className="text-xl" />
-              ) : (
+              {location === '/myRecipes' || <div>{!favorite ? (
                 <FaRegHeart onClick={() => handleFavorite(id)} className="text-xl" />
-              )}
+                ) : (
+                <FaHeart className="text-xl" />
+              )}</div>}
             </div>
           </div>
           <p className="font-normal text-gray-700 dark:text-gray-400">
