@@ -1,5 +1,5 @@
 import { Button, Label, TextInput } from "flowbite-react";
-import React, { useContext, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { Toaster, toast } from "react-hot-toast";
@@ -8,8 +8,9 @@ import useTitle from "../../hooks/useTitle";
 
 const Login = () => {
   useTitle('Login');
+  const emailRef = useRef();
   const [error, setError] = useState('');
-  const { login, googleLogin, githubLogin } = useContext(AuthContext);
+  const { login, googleLogin, githubLogin, resetPassword } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
@@ -56,6 +57,18 @@ const Login = () => {
       })
       .catch();
   };
+  const handleReset =()=>{
+    const email = emailRef.current.value;
+    resetPassword(email)
+    .then(()=>{
+      toast('A link has been sent to your email');
+    })
+    .catch(error=>{
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorCode, errorMessage);
+    })
+  }
   return (
     <div className="w-2/4 mx-auto mb-4">
       <div>
@@ -76,6 +89,7 @@ const Login = () => {
           </div>
           <TextInput
             id="email1"
+            ref={emailRef}
             type="email"
             name="email"
             placeholder="your email"
@@ -98,16 +112,20 @@ const Login = () => {
             required={true}
           />
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 justify-between">
           <Label htmlFor="remember" className="text-white">
             New here?{" "}
             <Link
-              className="border bg-green-400 px-2 py-1 rounded hover:bg-green-600"
+              className="border-transparent bg-green-400 px-2 py-1 rounded hover:bg-green-600"
               state={location}
               to="/registration"
             >
               Create Account
             </Link>
+          </Label>
+          <Label className="text-white">
+            Forgot password?{" "}
+            <Link className="border-transparent bg-green-400 px-2 py-1 rounded hover:bg-green-600" onClick={handleReset}>Reset it</Link>
           </Label>
         </div>
         <Button type="submit" className="bg-green-400 hover:bg-green-600">
