@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
-import { getFavCart } from '../../utilities/fakeDb';
+import { useLoaderData, useLocation } from 'react-router-dom';
+import { getFavCart, removeFromDb } from '../../utilities/fakeDb';
 import ChefRecipeCard from './ChefRecipeCard';
 import useTitle from '../../hooks/useTitle';
 
@@ -17,12 +17,18 @@ const MyRecipes = () => {
         }
         setCart(savedCart);
     },[])
+    const handleRemoveFromCart=id=>{
+        const remaining = cart.filter(recipe=>recipe.id !== id);
+        setCart(remaining);
+        removeFromDb(id);
+    }
     return (
         <div className='grid grid-cols-2 gap-4 my-4'>
             {
                 cart?.map(chefRecipe=><ChefRecipeCard
                 key={chefRecipe.id}
                 chefRecipe={chefRecipe}
+                handleRemoveFromCart={handleRemoveFromCart}
                 ></ChefRecipeCard>)
             }
         </div>

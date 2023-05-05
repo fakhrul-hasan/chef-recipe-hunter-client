@@ -40,6 +40,7 @@ const About = () => {
           </div>
         </div>
       </div>
+      {/* twitter section */}
       <section className="md:h-96 p-4 md:p-0 bg-about">
         <Swiper
           spaceBetween={30}

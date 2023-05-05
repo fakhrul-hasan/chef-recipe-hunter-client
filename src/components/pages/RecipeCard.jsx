@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { FaLink } from "react-icons/fa";
 import { Rating } from "@smastrom/react-rating";
 import Modal from 'react-modal';
+import { useLocation } from "react-router-dom";
 
 const customStyles = {
     content: {

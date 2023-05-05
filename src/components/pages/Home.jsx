@@ -47,6 +47,7 @@ const Home = () => {
   }
   return (
     <>
+    {/* banner section  */}
       <section className="md:min-h-screen w-full">
         <div className="md:flex gap-8 items-end px-2 md:px-10 md:h-96 py-4">
           <div className="flex-none">
@@ -96,9 +97,11 @@ const Home = () => {
           </div>
         </div>
       </section>
+      {/* about section  */}
       <section>
         <About></About>
       </section>
+      {/* recipes section  */}
       <section className="bg-blue-950 py-8">
         <div className="text-center">
           <h2
@@ -132,6 +135,7 @@ const Home = () => {
         border-r-[635px] border-r-transparent
         "
       ></div>
+      {/* chef section  */}
       <section className="px-2 md:px-10 bg-white">
         <div className="text-center pt-24">
           <h2

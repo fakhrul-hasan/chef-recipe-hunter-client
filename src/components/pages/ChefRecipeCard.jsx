@@ -2,10 +2,11 @@ import { Card } from "flowbite-react";
 import React, { useState } from "react";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
-import { FaRegHeart, FaHeart } from "react-icons/fa";
+import { FaRegHeart, FaHeart, FaRegTrashAlt } from "react-icons/fa";
 import { Toaster, toast } from "react-hot-toast";
-import { addToDb} from "../../utilities/fakeDb";
+import { addToDb, removeFromDb} from "../../utilities/fakeDb";
 import Modal from 'react-modal';
+import { useLocation } from "react-router-dom";
 
 const customStyles = {
   content: {
@@ -19,16 +20,16 @@ const customStyles = {
 };
 
 
-const ChefRecipeCard = ({ chefRecipe }) => {
+const ChefRecipeCard = ({ chefRecipe, handleRemoveFromCart }) => {
   let subtitle;
   const [favorite, setFavorite] = useState(false);
   const [modalIsOpen, setIsOpen] = useState(false);
   const { recipeName, ingredients, cookingMethod, rating, id } = chefRecipe;
   const ingredientsArr = ingredients.join(", ");
+  const location = useLocation().pathname;
   const handleFavorite = (id) => {
       addToDb(id);
       setFavorite(!favorite);
-      toast.success("Successfully added to your favorite recipe!");
   };
   function openModal() {
     setIsOpen(true);
@@ -56,11 +57,11 @@ const ChefRecipeCard = ({ chefRecipe }) => {
             <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
               {recipeName}
             </h5>
-            <div onClick={() => handleFavorite(id)}>
-              {!favorite ? (
-                <FaRegHeart className="text-xl" />
+            <div>
+              {location === '/myRecipes' && !favorite ? (
+                <FaHeart onClick={()=>handleRemoveFromCart(id)} className="text-xl" />
               ) : (
-                <FaHeart className="text-xl" />
+                <FaRegHeart onClick={() => handleFavorite(id)} className="text-xl" />
               )}
             </div>
           </div>
@@ -90,12 +91,13 @@ const ChefRecipeCard = ({ chefRecipe }) => {
         <button className="bg-green-400 hover:bg-green-600 text-white px-2 py-1 rounded-md" onClick={closeModal}>close</button>
       </Modal>
           </p>
-          <div className="font-normal text-gray-700 dark:text-gray-400 flex gap-2">
-            <span className="text-black font-semibold dark:text-white">
+          <div className="font-normal text-gray-700 dark:text-gray-400 flex items-center justify-between">
+            <span className="text-black font-semibold dark:text-white flex gap-2">
               Rating:{" "}
-            </span>
             <Rating style={{ maxWidth: 100 }} value={rating} readOnly />
             {rating}
+            </span>
+                {location === '/myRecipes' && <FaRegTrashAlt onClick={()=>handleRemoveFromCart(id)}/>}
           </div>
         </Card>
       </div>
