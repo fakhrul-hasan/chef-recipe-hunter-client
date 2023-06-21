@@ -74,7 +74,7 @@ const Home = () => {
             </p>
           </div>
         </div>
-        <div className="bg-green-400 md:mt-28 md:absolute w-full flex items-center justify-around">
+        <div className="bg-green-400 md:absolute top-full w-full flex items-center justify-around">
           <div className="flex items-center">
             <div className="rotate-45 bg-green-400 h-20 w-20">
               <img

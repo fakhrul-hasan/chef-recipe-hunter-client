@@ -3,6 +3,7 @@ import { AuthContext } from "../../Providers/AuthProvider";
 import Modal from "react-modal";
 import { Button, Label, TextInput } from "flowbite-react";
 import { toast } from "react-hot-toast";
+import useTitle from "../../hooks/useTitle";
 
 const customStyles = {
   content: {
@@ -18,6 +19,7 @@ const customStyles = {
 const Profile = () => {
   let subtitle;
   const { user, updateUserDetails } = useContext(AuthContext);
+  useTitle(user.email)
 //   console.log(user.displayName);
   const [modalIsOpen, setIsOpen] = useState(false);
   function openModal() {
